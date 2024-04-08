@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ChatApp</title>
+  </head>
+  <body>
+    <h1>ChatApp</h1>
+    <ul id="messages"></ul>
+    <form action="" id="form">
+      <input id="m" autocomplete="off" /><button>送る</button>
+    </form>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(function () {
+        var socket = io.connect("http://X.X.X.X:5000"); // ホストのIPアドレスを記載する
+        $("form").submit(function () {
+          socket.emit("message", $("#m").val());
+          $("#m").val("");
+          return false;
+        });
+        socket.on("broadcast message", function (msg) {
+          $("#messages").append($("<li>").text(msg));
+        });
+      });
+    </script>
+  </body>
+  <footer>
+    <p>&copy; 2024 Docker Kubernetes ネットワークのしくみ</p>
+  </footer>
+</html>

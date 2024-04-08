@@ -1,9 +1,7 @@
-FROM python:3.7-alpine
+FROM python:3.8.10-alpine
+WORKDIR /app
 COPY . .
-WORKDIR /src
-RUN pip install aioredis fastapi uvicorn websockets
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
-
-# docker run -d --name chat-a -p 8000:8000 -e HOST_IP=0.0.0.0 chat-app
-# docker run -d --rm --name redis -p 6379:6379 redis
-
+RUN apk add --no-cache python3-dev libffi-dev gcc musl-dev make
+RUN pip install --upgrade pip
+RUN pip install Flask flask-socketio gevent gevent-websocket redis
+CMD ["python", "app.py"]
