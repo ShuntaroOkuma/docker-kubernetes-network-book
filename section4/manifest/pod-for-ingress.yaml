@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: app1
+  name: app1
+spec:
+  serviceAccount: admin
+  containers:
+    - name: app1
+      image: kube-sample-app:1.0
+      command: ["python", "app.py"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: app2
+  name: app2
+spec:
+  serviceAccount: admin
+  containers:
+    - name: app2
+      image: kube-sample-app:1.0
+      command: ["python", "app.py"]

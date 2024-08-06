@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: api-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-container
+  template:
+    metadata:
+      labels:
+        app: api-container
+    spec:
+      serviceAccount: admin
+      containers:
+        - image: kube-sample-app:1.0
+          name: api-container
+          command: ["python", "app.py"]

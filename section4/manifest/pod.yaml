@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod
+spec:
+  serviceAccount: admin
+  containers:
+    - image: kube-sample-app:1.0
+      name: api-container
+      command: ["python", "app.py"]
+    - image: kube-sample-app:1.0
+      name: curl-container
+      command: ["tail", "-f", "/dev/null"]

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: curl-replicaset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: curl-container
+  template:
+    metadata:
+      labels:
+        app: curl-container
+    spec:
+      serviceAccount: admin
+      containers:
+        - image: kube-sample-app:1.0
+          name: curl-container
+          command: ["tail", "-f", "/dev/null"]

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: analysis
+  labels:
+    name: analysis
+spec:
+  containers:
+    - name: analysis
+      image: nginx:latest

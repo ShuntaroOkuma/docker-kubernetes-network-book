@@ -1,0 +1,13 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: app
+  labels:
+    ns: app
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: analysis
+  labels:
+    ns: analysis
