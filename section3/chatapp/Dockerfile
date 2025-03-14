@@ -1,4 +1,4 @@
-FROM python:3.8.10-alpine
+FROM python:3.12.3-alpine
 WORKDIR /app
 COPY . .
 RUN apk add --no-cache python3-dev libffi-dev gcc musl-dev make

@@ -1,4 +1,4 @@
-FROM python:3.8.10-alpine
+FROM python:3.12.3-alpine
 COPY . .
 RUN pip install flask
 RUN apk add curl
